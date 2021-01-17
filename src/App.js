@@ -1,4 +1,4 @@
-import React,{useCallback, useEffect, useState} from 'react'
+import React,{useCallback, useEffect, useState, Suspense} from 'react'
 
 import {BrowserRouter, Route, Redirect} from 'react-router-dom'
 
@@ -12,8 +12,15 @@ import Auth from './CONTAINERS/Auth/Auth'
 // auth context 
 import { AuthContext } from './CONTEXTS/AuthContext'
 
+// lazy loading
+// const Contests = React.lazy(() => import('./CONTAINERS/Contests'))
+
 // dispatch action
 // import { useDispatch } from 'react-redux'
+
+const Loader = () => (
+  <div>loading...</div>
+);
 
 const App = () => {
 	// const dispatch = useDispatch()
@@ -47,11 +54,11 @@ const App = () => {
 			    <Layout>
 			    {isLoggedIn ? (
 			    	<>
-						<Route path = "/contests" component = {Contests} exact/>		    	
+						<Route path = "/contests" component = {Contests} exact/>
 						<Route path = "/slots" component = {Slots} exact/>		    	
 						<Route path = "/winners" component = {Winners} exact/>		    	
 						<Route path = "/reports" component = {Reports} exact/>	
-						<Redirect to = "contests"/>
+						<Redirect to = "/contests" />
 			    	</>
 			    	) : (
 			    	<>

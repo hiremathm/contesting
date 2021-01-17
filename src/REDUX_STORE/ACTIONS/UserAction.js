@@ -33,7 +33,7 @@ export const login = (email, password) => {
 		}
 
 		const responseData = await response.json()
-
+		console.log("LOGIN RESPONSE", responseData)
 		dispatch(authenticate(responseData.idToken, responseData.localId, parseInt(responseData.expiresIn) * 100))
 		const expiryDate = new Date(new Date().getTime() + parseInt(responseData.expiresIn) * 100);
 		saveData(responseData.idToken, responseData.localId, expiryDate)
