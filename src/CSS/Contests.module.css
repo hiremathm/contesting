@@ -1,4 +1,11 @@
 .Contests{
-	height: 100%;
+/*	height: 100%;
 	max-height: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;*/
+}
+
+.Contests Button {
+	margin-bottom: 10px;
 }
