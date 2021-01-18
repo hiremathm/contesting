@@ -1,11 +1,20 @@
-.Contests{
-/*	height: 100%;
-	max-height: 70%;
-	display: flex;
-	justify-content: center;
-	align-items: center;*/
+.Contests {
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*flex-flow: column;*/
+	/*align-items: center;*/
+	width: 100%
 }
-
 .Contests Button {
 	margin-bottom: 10px;
+}
+
+.ButtonStyle {
+	display: flex;
+	justify-content: space-between;
+}
+
+.Modal {
+	margin-top: 10px;
+	width: 100%
 }

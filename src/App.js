@@ -1,12 +1,14 @@
-import React,{useCallback, useEffect, useState, Suspense} from 'react'
+import React,{useCallback, useEffect, useState} from 'react'
 
 import {BrowserRouter, Route, Redirect} from 'react-router-dom'
 
 import Layout from './UI/Layout'
-import Contests from './CONTAINERS/Contests'
-import Winners from './CONTAINERS/Winners'
-import Slots from './CONTAINERS/Slots'
-import Reports from './CONTAINERS/Reports'
+import Contests from './CONTAINERS/Contests/Contests'
+import ContestForm from './CONTAINERS/Contests/ContestForm'
+
+import Winners from './CONTAINERS/Winners/Winners'
+import Slots from './CONTAINERS/Slots/Slots'
+import Reports from './CONTAINERS/Reports/Reports'
 import Auth from './CONTAINERS/Auth/Auth'
 
 // auth context 
@@ -17,10 +19,6 @@ import { AuthContext } from './CONTEXTS/AuthContext'
 
 // dispatch action
 // import { useDispatch } from 'react-redux'
-
-const Loader = () => (
-  <div>loading...</div>
-);
 
 const App = () => {
 	// const dispatch = useDispatch()
@@ -55,6 +53,7 @@ const App = () => {
 			    {isLoggedIn ? (
 			    	<>
 						<Route path = "/contests" component = {Contests} exact/>
+						<Route path = "/contests/new" component = {ContestForm} exact />
 						<Route path = "/slots" component = {Slots} exact/>		    	
 						<Route path = "/winners" component = {Winners} exact/>		    	
 						<Route path = "/reports" component = {Reports} exact/>	

@@ -1,6 +1,9 @@
 {
+  "database": {
+    "rules": "database.rules.json"
+  },
   "hosting": {
-    "public": "build",
+    "public": "contesting-engine/build",
     "ignore": [
       "firebase.json",
       "**/.*",
