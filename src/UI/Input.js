@@ -50,7 +50,7 @@ const Input = (props) => {
 				id = {props.id}
 				name = {props.name}
 				placeholder = {props.placeholder}
-				className={classes.InputElement}
+				className={props.Inputstyles ? props.Inputstyles : classes.InputElement}
 				onChange = {inputChangeHandler}
 				value = {inputState.value}
 				onBlur = {touchHandler}
@@ -74,7 +74,7 @@ const Input = (props) => {
 
 	return (
 		<div className = {classes.Input}>
-			{<label className = {classes.Label} >{props.label}</label>}
+			{props.setlabel && <label className = {classes.Label} >{props.label}</label>}
 			{inputElement}
 			{!inputState.isValid && inputState.isTouched && <p>{props.errortext}</p>}
 		</div>

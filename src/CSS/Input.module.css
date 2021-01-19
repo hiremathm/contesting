@@ -11,7 +11,7 @@
 }
 
 .InputElement {
-	/*outline: none;*/
+	outline: none;
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -29,8 +29,16 @@
 	outline: none;
 	background-color: white;
 	/*background: #ebebeb;*/
-	border-color: blue;
+	/*border-color: blue;*/
 }
+
+.Input p {
+	font-size: 14px;
+	text-align: center;
+	color: red;
+	padding: 0;
+}
+
 
 
 .form-control label,

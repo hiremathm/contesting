@@ -9,7 +9,7 @@ const table = (props) => {
       <thead>
         <tr>
           {
-            props.cols && props.cols.map((col, index) => <th>{col}</th>)
+            props.cols && props.cols.map((col, index) => <th key = {index}>{col}</th>)
           }
         </tr>
       </thead>
