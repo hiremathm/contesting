@@ -1,0 +1,27 @@
+.Table {
+	font-size: 15px;
+	display: block;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+@media (min-width: 321px){
+	.Table{
+		font-size: 15px;
+		overflow-x: scroll;
+		/*display: inline-table;*/
+		/*width: auto;*/
+		/*white-space: nowrap;*/
+		/*display: inline-block;*/
+		/*overflow: none;*/
+		/*white-space: nowrap;*/
+	}
+}
+
+@media (min-width: 770px){
+	.Table {	
+		font-size: 15px;
+		overflow:hidden;
+		display: inline-table;	
+	}
+}
