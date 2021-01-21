@@ -1,7 +1,9 @@
 import React, {useReducer, useEffect} from 'react'
+import DateTimePicker from 'react-datetime-picker';
 
 import classes from '../CSS/Input.module.css'
 import { validate } from '../UTIL/validators'
+
 
 const inputReducer = (state, action) => {
 	switch(action.type){
@@ -23,19 +25,31 @@ const inputReducer = (state, action) => {
 
 const Input = (props) => {
 
-	const initialState = {value: '', isValid: false, isTouched: false}
-
+	let initialState = {value: '', isValid: false, isTouched: false}
+	
+	if(props.inputtype === 'date'){
+		initialState = {value: new Date(), isValid: true, isTouched: true}
+	}
 	const [inputState, dispatch] = useReducer(inputReducer, initialState)
 
 	let inputElement = null;
 	
 	const inputChangeHandler = event => {
-		console.log("EVENT", event.target.name, event.target.value)
-		dispatch({
-			type: 'CHANGE',
-			value: event.target.value,
-			validators: props.validators
-		})
+		console.log("EVENT", new Date(event))
+		if (props.inputtype === 'date'){
+			dispatch({
+				type: 'CHANGE',
+				value: event,
+				validators: props.validators
+			})
+		}else{		
+			dispatch({
+				type: 'CHANGE',
+				value: event.target.value,
+				validators: props.validators
+			})
+		}
+
 	}
 
 	const touchHandler = () => {
@@ -43,7 +57,7 @@ const Input = (props) => {
 			type: 'TOUCH'
 		})
 	}
-
+	
 	switch(props.inputtype){
 		case ('input') : 
 			inputElement = <input  
@@ -65,6 +79,8 @@ const Input = (props) => {
 			inputElement = <select className={props.Inputstyles ? props.Inputstyles : classes.InputElement} 
 					onChange = {inputChangeHandler}
 					onBlur = {touchHandler}
+					value = {inputState.value}
+
 				>
 				{
 					props.options.map(option => {
@@ -73,14 +89,28 @@ const Input = (props) => {
 				} 
 			</select>
 			break;
+		case ('date') : 
+			inputElement = <DateTimePicker className = {props.Inputstyles ? props.Inputstyles : classes.InputElement} 
+				onChange = {inputChangeHandler}
+				value = {new Date(inputState.value)}
+				onBlur = {touchHandler}
+				id = {props.id}
+				name = {props.name}
+				placeholder = {props.placeholder}
+				disableClock = {true}
+				minDate = {new Date()}
+			/>
+			break;
 		default:
-			inputElement = <input className = {classes.InputElement} {...props} />
+			inputElement = <input className = {props.Inputstyles ? props.Inputstyles : classes.InputElement} {...props} 
+				onChange = {inputChangeHandler}
+				value = {inputState.value}
+				onBlur = {touchHandler}
+			/>
 	}
 
 	const {id, onInput} = props
 	const {value, isValid} = inputState
-	
-	console.log("INPUTSSTATE", inputState)
 
 	useEffect(() => {
 		onInput(id, value, isValid)

@@ -96,6 +96,31 @@ const ContestForm = () => {
 						options = {[{value: "#", text: "Select Language"},{value: "en", text: "English"},{value: "hi", text: "Hindi"},{value: "gu", text: "Gujarati"}]}
 					/>
 				</div>
+
+				<div className = {classes.FormGroup}>
+					<Input 
+						inputtype = "date"
+						id = "game_start_date"
+						type = "date"
+						onInput = {inputHandler}
+						errortext = "Required"
+						validators = {[]}
+						setlabel = {true}
+						label = "Game Start Date *"
+						Inputstyles = {classes.Datepicker}
+					/>
+					<Input 
+						inputtype = "date"
+						type = "date"
+						id = "geme_end_date"
+						onInput = {inputHandler}
+						errortext = "Required"
+						validators = {[]}
+						setlabel = {true}
+						label = "Game End Date *"
+						Inputstyles = {classes.Datepicker}
+					/>
+				</div>
 			</Card>
 		</div>
 	)

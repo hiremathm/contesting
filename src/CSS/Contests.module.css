@@ -58,7 +58,6 @@
 	border-top: none;
 	border-bottom: 1px solid #ccc;
 	padding: 0 10px;
-	height: 20px;
 	box-sizing: border-box;
 	text-align: left;
 	margin: 0;
@@ -79,6 +78,13 @@
 	outline: none;
 }
 
+.Datepicker {
+	width: 370px;
+	margin: 0;
+	font-size: 14px;
+	height: 30px;
+	border-radius: 3px;
+}
 select {
 	background-color: white;
 	color: #5F6A6A;
@@ -87,13 +93,13 @@ select {
 }
 
 @media (min-width: 320px){
-	.FormGroup {
+	.FormGroup{
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker{
 		width: 220px;
 	}
 
@@ -120,18 +126,18 @@ select {
 		align-items: center;
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker{
 		width: 270px;
 	}
 }
 @media (min-width: 414px){
-	.FormGroup {
+	.FormGroup{
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker{
 		width: 300px;
 	}
 }
@@ -145,9 +151,38 @@ select {
 		/*width: 100%;*/
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker{
 		width: 240px;
 	}
+}
+
+@media (min-width: 540px){
+	.FormGroup {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.Inputid, .Datepicker {
+		width: 380px;
+	}
+}
+
+@media (min-width: 600px){
+	.FormGroup{
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: space-around;
+		/*width: 100%;*/
+	}
+
+	.Inputid, .Datepicker{
+		width: 400px;
+	}
+
+
 }
 
 @media (min-width: 768px){
@@ -159,7 +194,7 @@ select {
 		/*width: 100%;*/
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker{
 		width: 280px;
 	}
 }
@@ -174,7 +209,7 @@ select {
 		/*width: 100%;*/
 	}
 
-	.Inputid {
+	.Inputid, .Datepicker {
 		width: 380px;
 	}
 }
