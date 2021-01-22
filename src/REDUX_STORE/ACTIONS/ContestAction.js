@@ -21,21 +21,24 @@ export const getContests = () => {
 export const postContest = (body) => {
 	return async (dispatch) => {
 		try {
-			const url = '/contests' 
-			const response = await axios.post(url, {body: body })	
+			const url = 'http://34.204.190.112:6060/contests' 
+			const response = await fetch(url,{
+	        	method: 'POST',
+	        	headers: {
+	          	'Content-Type': 'application/json'
+	        	},
+		        body: JSON.stringify({
+		          	contest: body
+		        })
+      		})	
 			if(response.status === 200){
-				// dispatch({
-				// 	type: 'GET_CONTESTS', payload: response.data.data.items
-				// })
-
-				console.log("RESPONSE", response)
+				console.log(response)
 			}else{
-				console.log("Opps! Something went wrong.")
+				console.log("RESPONSE in try catch", response)
 			}			
 
-			console.log("body ", body)
 		}catch(error){
-			console.log(error.message)
+			console.log("RESPONSE", error)
 		}
 	}
 }

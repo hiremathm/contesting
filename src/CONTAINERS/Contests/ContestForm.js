@@ -48,22 +48,25 @@ const ContestForm = (props) => {
 		e.preventDefault()
 		setIsLoading(true)
 		const formData = {
-			game_id: formState.inputs.game_id.value,
+			contest_unique_id: formState.inputs.game_id.value,
 			title: formState.inputs.title.value,
-			name: formState.inputs.name.value, 
+			contest_name: formState.inputs.name.value, 
 			status: formState.inputs.status.value,
 			country: formState.inputs.country.value, 
-			language: formState.inputs.language.value,
-			game_start_date: formState.inputs.game_start_date.value.toISOString(),
-			game_end_date: formState.inputs.game_end_date.value.toISOString()
+			language: "english",
+			banner: "https://daex9l847wg3n.cloudfront.net/contesting_images/contests/test/67748/test-contesting_img2-1611282476.jpg",
+			language_code: formState.inputs.language.value,
+			start_date: formState.inputs.game_start_date.value.toString(),
+			end_date: formState.inputs.game_end_date.value.toString(),
+			question_languages: [formState.inputs.language.value],
+			regions: ["IN"],
+			description: formState.inputs.description.value
 		}
-
- 		formRef.current.reset();
- 		 // e.target.reset();
  		dispatch(postContest(formData))
 		setTimeout(() => {
 			setIsLoading(false)
-		}, 10000)
+			props.history.push("/contests")
+		}, 5000)
 	}
 
 	return (
@@ -160,7 +163,7 @@ const ContestForm = (props) => {
 
 					<div className = {classes.FormGroup}>
 						<Input 
-							inputtype = "date"
+							inputtype = "input"
 							id = "game_start_date"
 							type = "date"
 							onInput = {inputHandler}
@@ -169,16 +172,16 @@ const ContestForm = (props) => {
 							setlabel = {true}
 							label = "Game Start Date *"
 							Inputstyles = {classes.Datepicker}
-							name = "datetime"
+							name = "date"
 						/>
 						<Input 
-							inputtype = "date"
+							inputtype = "input"
 							type = "date"
 							id = "game_end_date"
 							onInput = {inputHandler}
 							errortext = "Required"
 							validators = {[]}
-							name = "datetime"
+							name = "date"
 							setlabel = {true}
 							label = "Game End Date *"
 							Inputstyles = {classes.Datepicker}

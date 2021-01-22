@@ -1,5 +1,5 @@
 import React, {useReducer, useEffect} from 'react'
-import DateTimePicker from 'react-datetime-picker';
+// import DateTimePicker from 'react-datetime-picker';
 
 import classes from '../CSS/Input.module.css'
 import { validate } from '../UTIL/validators'
