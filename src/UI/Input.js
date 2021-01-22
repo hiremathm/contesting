@@ -28,14 +28,13 @@ const Input = (props) => {
 	let initialState = {value: '', isValid: false, isTouched: false}
 	
 	if(props.inputtype === 'date'){
-		initialState = {value: new Date(), isValid: true, isTouched: true}
+		initialState = {value: new Date().getDate(), isValid: true, isTouched: true}
 	}
 	const [inputState, dispatch] = useReducer(inputReducer, initialState)
 
 	let inputElement = null;
 	
 	const inputChangeHandler = event => {
-		console.log("EVENT", new Date(event))
 		if (props.inputtype === 'date'){
 			dispatch({
 				type: 'CHANGE',
@@ -73,7 +72,16 @@ const Input = (props) => {
 			
 			break;
 		case ('textarea') : 
-			inputElement = <textarea  className = {classes.InputElement} {...props} />
+			inputElement = <textarea 
+				className={props.Inputstyles ? props.Inputstyles : classes.InputElement}
+				type = {props.type} 
+				id = {props.id}
+				name = {props.name}
+				placeholder = {props.placeholder}
+				onChange = {inputChangeHandler}
+				value = {inputState.value}
+				onBlur = {touchHandler}
+			/>
 			break;
 		case ('select') :
 			inputElement = <select className={props.Inputstyles ? props.Inputstyles : classes.InputElement} 
@@ -90,15 +98,15 @@ const Input = (props) => {
 			</select>
 			break;
 		case ('date') : 
-			inputElement = <DateTimePicker className = {props.Inputstyles ? props.Inputstyles : classes.InputElement} 
+			inputElement = <input  
+				type = {props.type}
+				className = {props.Inputstyles ? props.Inputstyles : classes.InputElement} 
 				onChange = {inputChangeHandler}
 				value = {new Date(inputState.value)}
 				onBlur = {touchHandler}
 				id = {props.id}
 				name = {props.name}
 				placeholder = {props.placeholder}
-				disableClock = {true}
-				minDate = {new Date()}
 			/>
 			break;
 		default:

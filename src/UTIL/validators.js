@@ -23,7 +23,6 @@ export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 export const validate = (value, validators) => {
   let isValid = true;
   for (const validator of validators) {
-    console.log("DATE", value)
     if (validator.type === VALIDATOR_TYPE_REQUIRE) {
       isValid = isValid && value.trim().length > 0 && value.trim() !== '#';
     }

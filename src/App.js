@@ -57,7 +57,7 @@ const App = () => {
 						<Route path = "/slots" component = {Slots} exact/>		    	
 						<Route path = "/winners" component = {Winners} exact/>		    	
 						<Route path = "/reports" component = {Reports} exact/>	
-						<Redirect to = "/contests" />
+						{<Redirect to = "/contests" />}
 			    	</>
 			    	) : (
 			    	<>

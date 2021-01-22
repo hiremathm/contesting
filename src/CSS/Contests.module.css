@@ -68,11 +68,13 @@
 
 }
 
+.Description:hover,
 .Inputid:hover {
 	border: 1px solid black;
 	outline: none;
 }
 
+.Description:focus,
 .Inputid:focus {
 	border: 2px solid #3D1CC2;
 	outline: none;
@@ -85,6 +87,13 @@
 	height: 30px;
 	border-radius: 3px;
 }
+
+.Description {
+	height: 80px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
 select {
 	background-color: white;
 	color: #5F6A6A;
@@ -99,7 +108,7 @@ select {
 		align-items: center;
 	}
 
-	.Inputid, .Datepicker{
+	.Inputid, .Datepicker, .Description{
 		width: 220px;
 	}
 
@@ -126,7 +135,7 @@ select {
 		align-items: center;
 	}
 
-	.Inputid, .Datepicker{
+	.Inputid, .Datepicker, .Description{
 		width: 270px;
 	}
 }
@@ -137,7 +146,7 @@ select {
 		align-items: center;
 	}
 
-	.Inputid, .Datepicker{
+	.Inputid, .Datepicker, .Description{
 		width: 300px;
 	}
 }
@@ -151,7 +160,7 @@ select {
 		/*width: 100%;*/
 	}
 
-	.Inputid, .Datepicker{
+	.Inputid, .Datepicker, .Description{
 		width: 240px;
 	}
 }
@@ -164,7 +173,7 @@ select {
 		justify-content: space-around;
 	}
 
-	.Inputid, .Datepicker {
+	.Inputid, .Datepicker, .Description {
 		width: 380px;
 	}
 }
@@ -178,7 +187,7 @@ select {
 		/*width: 100%;*/
 	}
 
-	.Inputid, .Datepicker{
+	.Inputid, .Datepicker, .Description{
 		width: 400px;
 	}
 
@@ -197,6 +206,9 @@ select {
 	.Inputid, .Datepicker{
 		width: 280px;
 	}
+	.Description{
+		width: 500px;
+	}
 }
 
 
@@ -211,5 +223,9 @@ select {
 
 	.Inputid, .Datepicker {
 		width: 380px;
+	}
+
+	.Description {
+		width: 810px;
 	}
 }

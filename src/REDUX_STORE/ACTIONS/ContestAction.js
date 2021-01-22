@@ -16,3 +16,26 @@ export const getContests = () => {
 		}
 	}
 }
+
+
+export const postContest = (body) => {
+	return async (dispatch) => {
+		try {
+			const url = '/contests' 
+			const response = await axios.post(url, {body: body })	
+			if(response.status === 200){
+				// dispatch({
+				// 	type: 'GET_CONTESTS', payload: response.data.data.items
+				// })
+
+				console.log("RESPONSE", response)
+			}else{
+				console.log("Opps! Something went wrong.")
+			}			
+
+			console.log("body ", body)
+		}catch(error){
+			console.log(error.message)
+		}
+	}
+}

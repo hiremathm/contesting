@@ -1,126 +1,210 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
+import { css } from "@emotion/core";
+import {useDispatch} from 'react-redux'
 
 import Card from '../../UI/Card'
+import FadeLoader from "react-spinners/FadeLoader"
 import Input from '../../UI/Input'
+import Button from '../../UI/Button'
 import classes from '../../CSS/Contests.module.css'
+import Backdrop from '../../UI/Backdrop'
 
 import {VALIDATOR_REQUIRE} from '../../UTIL/validators'
-const ContestForm = () => {
 
-	const inputHandler = (id, value, isValid) => {
-		console.log("VALUES", id, value, isValid)
+import { useForm } from '../../CUSTOM_HOOKS/formHook'
+
+// actions 
+import { postContest } from '../../REDUX_STORE/ACTIONS/ContestAction'
+
+const ContestForm = (props) => {
+	const override = css`
+		display: block;
+		margin: 0 auto;
+		height: 15;
+		width: 5;
+	`;
+
+	const obj = {
+			value: '',
+			isValid: ''
+		}
+
+	const [formState, inputHandler] = useForm({
+		game_id: obj,
+		title: obj,
+		name: obj, 
+		status: obj,
+		country: obj, 
+		language: obj,
+		game_start_date: obj,
+		game_end_date: obj
+	}, false)
+
+	const [isLoading, setIsLoading]= useState(false)
+	const dispatch = useDispatch()
+	const formRef = useRef()
+
+	const submitHandler = (e) => {
+		e.preventDefault()
+		setIsLoading(true)
+		const formData = {
+			game_id: formState.inputs.game_id.value,
+			title: formState.inputs.title.value,
+			name: formState.inputs.name.value, 
+			status: formState.inputs.status.value,
+			country: formState.inputs.country.value, 
+			language: formState.inputs.language.value,
+			game_start_date: formState.inputs.game_start_date.value.toISOString(),
+			game_end_date: formState.inputs.game_end_date.value.toISOString()
+		}
+
+ 		formRef.current.reset();
+ 		 // e.target.reset();
+ 		dispatch(postContest(formData))
+		setTimeout(() => {
+			setIsLoading(false)
+		}, 10000)
 	}
 
 	return (
 		<div className = {classes.ContestForm}>
 			<Card cardstyles = {classes.ContestFormCard}>
 				<p>Create New Contest</p>
-				<hr/>
-				<div className = {classes.FormGroup}>
-					<Input
-	                	inputtype = "input" 
-	                    type = "text"
-	                    id = "gameid"
-	                    placeholder = "Game Id"
-	                    onInput = {inputHandler}
-	                    errortext = "Required"
-	                    validators = {[VALIDATOR_REQUIRE()]}
-	                    label = "Game ID *"
-	                    setlabel = {true}
-	                    Inputstyles = {classes.Inputid}
-	                />	
-	                <Input
-	                	inputtype = "input" 
-	                    type = "text"
-	                    id = "title"
-	                    placeholder = "Title"
-	                    onInput = {inputHandler}
-	                    errortext = "Required"
-	                    label = "Title *"
-	                    validators = {[VALIDATOR_REQUIRE()]}
-	                    setlabel = {true}
-	                    Inputstyles = {classes.Inputid}
-	                />	
-				</div>
-				<div className = {classes.FormGroup}>
-					<Input
-	                	inputtype = "input" 
-	                    type = "text"
-	                    id = "name"
-	                    label = "Contest Name *"
-	                    placeholder = "Contest Name"
-	                    onInput = {inputHandler}
-	                    errortext = "Required"
-	                    validators = {[VALIDATOR_REQUIRE()]}
-	                    setlabel = {true}
-	                   	Inputstyles = {classes.Inputid}
-	                />	
+				
+				<form onSubmit = {submitHandler} ref = {formRef}>
+					<hr/>
 
-					<Input 
-						inputtype = "select"
-						id = "status"
-						onInput = {inputHandler}
-						errortext = "Required"
-						validators = {[VALIDATOR_REQUIRE()]}
-						setlabel = {true}
-						label = "Status *"
-						Inputstyles = {classes.Inputid}
-						options = {[{value: "#", text: "Select Status"},{value: "draft", text: "Draft"}, {value: "live", text: "Live"}, {value: "schedule", text: "Schedule"}, {value: "paused", text: "Paused"}]}
-					/>
-	                
-				</div>
-				<div className = {classes.FormGroup}>
+					<div>{isLoading && <FadeLoader color="#ff0055" loading={isLoading} size={5} css={override}/>}</div>
+					<Backdrop show = {isLoading}/>
+
+					<div className = {classes.FormGroup}>
+						<Input
+		                	inputtype = "input" 
+		                    type = "text"
+		                    id = "game_id"
+		                    placeholder = "Game Id"
+		                    onInput = {inputHandler}
+		                    errortext = "Required"
+		                    validators = {[VALIDATOR_REQUIRE()]}
+		                    label = "Game ID *"
+		                    setlabel = {true}
+		                    Inputstyles = {classes.Inputid}
+		                />	
+		                <Input
+		                	inputtype = "input" 
+		                    type = "text"
+		                    id = "title"
+		                    placeholder = "Title"
+		                    onInput = {inputHandler}
+		                    errortext = "Required"
+		                    label = "Title *"
+		                    validators = {[VALIDATOR_REQUIRE()]}
+		                    setlabel = {true}
+		                    Inputstyles = {classes.Inputid}
+		                />	
+					</div>
+					<div className = {classes.FormGroup}>
+						<Input
+		                	inputtype = "input" 
+		                    type = "text"
+		                    id = "name"
+		                    label = "Contest Name *"
+		                    placeholder = "Contest Name"
+		                    onInput = {inputHandler}
+		                    errortext = "Required"
+		                    validators = {[VALIDATOR_REQUIRE()]}
+		                    setlabel = {true}
+		                   	Inputstyles = {classes.Inputid}
+		                />	
+
+						<Input 
+							inputtype = "select"
+							id = "status"
+							onInput = {inputHandler}
+							errortext = "Required"
+							validators = {[VALIDATOR_REQUIRE()]}
+							setlabel = {true}
+							label = "Status *"
+							Inputstyles = {classes.Inputid}
+							options = {[{value: "#", text: "Select Status"},{value: "draft", text: "Draft"}, {value: "live", text: "Live"}, {value: "schedule", text: "Schedule"}, {value: "paused", text: "Paused"}]}
+						/>
+		                
+					</div>
+					<div className = {classes.FormGroup}>
 
 
-					<Input 
-						inputtype = "select"
-						id = "country"
-						onInput = {inputHandler}
-						errortext = "Required"
-						validators = {[VALIDATOR_REQUIRE()]}
-						setlabel = {true}
-						label = "Country *"
-						Inputstyles = {classes.Inputid}
-						options = {[{value: "#", text: "Select Country"},{value: "in", text: "India"},{value: "us", text: "US"},{value: "row", text: "ROW"}]}
-					/>
+						<Input 
+							inputtype = "select"
+							id = "country"
+							onInput = {inputHandler}
+							errortext = "Required"
+							validators = {[VALIDATOR_REQUIRE()]}
+							setlabel = {true}
+							label = "Country *"
+							Inputstyles = {classes.Inputid}
+							options = {[{value: "#", text: "Select Country"},{value: "in", text: "India"},{value: "us", text: "US"},{value: "row", text: "ROW"}]}
+						/>
 
-					<Input 
-						inputtype = "select"
-						id = "language"
-						onInput = {inputHandler}
-						errortext = "Required"
-						validators = {[VALIDATOR_REQUIRE()]}
-						setlabel = {true}
-						label = "Language *"
-						Inputstyles = {classes.Inputid}
-						options = {[{value: "#", text: "Select Language"},{value: "en", text: "English"},{value: "hi", text: "Hindi"},{value: "gu", text: "Gujarati"}]}
-					/>
-				</div>
+						<Input 
+							inputtype = "select"
+							id = "language"
+							onInput = {inputHandler}
+							errortext = "Required"
+							validators = {[VALIDATOR_REQUIRE()]}
+							setlabel = {true}
+							label = "Language *"
+							Inputstyles = {classes.Inputid}
+							options = {[{value: "#", text: "Select Language"},{value: "en", text: "English"},{value: "hi", text: "Hindi"},{value: "gu", text: "Gujarati"}]}
+						/>
+					</div>
 
-				<div className = {classes.FormGroup}>
-					<Input 
-						inputtype = "date"
-						id = "game_start_date"
-						type = "date"
-						onInput = {inputHandler}
-						errortext = "Required"
-						validators = {[]}
-						setlabel = {true}
-						label = "Game Start Date *"
-						Inputstyles = {classes.Datepicker}
-					/>
-					<Input 
-						inputtype = "date"
-						type = "date"
-						id = "geme_end_date"
-						onInput = {inputHandler}
-						errortext = "Required"
-						validators = {[]}
-						setlabel = {true}
-						label = "Game End Date *"
-						Inputstyles = {classes.Datepicker}
-					/>
-				</div>
+					<div className = {classes.FormGroup}>
+						<Input 
+							inputtype = "date"
+							id = "game_start_date"
+							type = "date"
+							onInput = {inputHandler}
+							errortext = "Required"
+							validators = {[]}
+							setlabel = {true}
+							label = "Game Start Date *"
+							Inputstyles = {classes.Datepicker}
+							name = "datetime"
+						/>
+						<Input 
+							inputtype = "date"
+							type = "date"
+							id = "game_end_date"
+							onInput = {inputHandler}
+							errortext = "Required"
+							validators = {[]}
+							name = "datetime"
+							setlabel = {true}
+							label = "Game End Date *"
+							Inputstyles = {classes.Datepicker}
+						/>
+					</div>
+
+					<div className = {classes.FormGroup}>
+						<Input
+		                	inputtype = "textarea" 
+		                    type = "textarea"
+		                    id = "description"
+		                    placeholder = "Description"
+		                    onInput = {inputHandler}
+		                    errortext = "Required"
+		                    validators = {[VALIDATOR_REQUIRE()]}
+		                    label = "Game ID *"
+		                    setlabel = {true}
+		                    Inputstyles = {classes.Description}
+		                />	
+					</div>
+					<div className = {classes.FormGroup}>
+						<Button disabled = {!formState.formIsValid}>
+							Submit
+						</Button>
+					</div>
+				</form>
 			</Card>
 		</div>
 	)
