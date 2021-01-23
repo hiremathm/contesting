@@ -5,7 +5,10 @@
 	white-space: nowrap;
 }
 .Table th {
+	height: 30px;
 	background-color: #ff0055;
+	box-sizing: border-box;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.26);
 	color: white;
 }
 
