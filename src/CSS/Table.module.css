@@ -4,6 +4,15 @@
 	overflow-x: scroll;
 	white-space: nowrap;
 }
+.Table th {
+	background-color: #ff0055;
+	color: white;
+}
+
+.Table td {
+	/*color: black;*/
+	border-color: black;
+}
 
 @media (min-width: 321px){
 	.Table{

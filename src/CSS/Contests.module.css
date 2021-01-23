@@ -7,11 +7,35 @@
 }
 .Contests Button {
 	margin-bottom: 10px;
+	/*padding: 25px;*/
+	height: 30px;
+	font-weight: bold;
+	font-size: 16px;
 }
 
 .ButtonStyle {
 	display: flex;
 	justify-content: space-between;
+}
+
+.PaginationStyle{
+	display: flex;
+	justify-content: center;
+}
+
+.PaginationStyle Button {
+	margin: 1px;
+	border-radius: 5px;
+}
+
+.PaginationStyle select {
+	width: 105px;
+	border: 2px solid #ff0055;
+	padding: 0 10px;
+	margin: 1px;
+	height: 35px;
+	border-radius: 5px;
+	outline: none;
 }
 
 .Modal {

@@ -54,8 +54,8 @@ const ContestForm = (props) => {
 			language: "english",
 			banner: "https://daex9l847wg3n.cloudfront.net/contesting_images/contests/test/67748/test-contesting_img2-1611282476.jpg",
 			language_code: formState.inputs.language.value,
-			start_date: formState.inputs.game_start_date.value.toLocaleString()+ "T00:00:00Z",
-			end_date: formState.inputs.game_end_date.value.toLocaleString() + "T00:00:00Z",
+			start_date: formState.inputs.game_start_date.value,
+			end_date: formState.inputs.game_end_date.value,
 			question_languages: [formState.inputs.language.value],
 			regions: ["IN"],
 			description: formState.inputs.description.value

@@ -23,7 +23,7 @@ const table = (props) => {
               <td>{row.title.toUpperCase()}</td>
               <td>{row.contest_unique_id}</td>
               <td>{row.no_of_winners}</td>
-              <td>{row.status}</td>
+              <td>{row.status.toUpperCase()}</td>
               <td>{new Date(row.winners_declared_at).toDateString()}</td>
               <td>
                   <MdModeEdit style = {{cursor: 'pointer'}} size = "2em" color = "green" onClick = {() => props.edit(row.contest_id)}/>
@@ -33,7 +33,7 @@ const table = (props) => {
           ))
         }
       </tbody>
-    </Table>
+    </Table>  
   )
 }
 
