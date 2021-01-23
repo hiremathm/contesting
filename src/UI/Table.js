@@ -19,7 +19,7 @@ const table = (props) => {
         {
           props.rows && props.rows.map((row, index) => (
             <tr key = {index}>
-              <td>{index}</td>
+              <td>{index + 1}</td>
               <td>{row.title.toUpperCase()}</td>
               <td>{row.contest_unique_id}</td>
               <td>{row.no_of_winners}</td>

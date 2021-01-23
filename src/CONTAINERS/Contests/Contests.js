@@ -86,9 +86,15 @@ class Contests extends React.Component {
 					!this.state.show && <Row lg={12} md={12} sm={12} xs={12}>
 					<Col lg={12} md={12} sm={12} xs = {12}>
 						<div className = {classes.ButtonStyle}>
-							<h3>All Contests</h3>
-
 							<Button size = "small" onClick = {() => this.props.history.push("/contests/new")}>+ Add Contest</Button>
+							<select onChange = {this.changeRecordsSize}>
+								<option value ="#">Records</option>
+								<option value ="5">5</option>
+								<option value ="10">10</option>
+								<option value ="15">15</option>
+							</select>
+
+							<input type = "text" placeholder = "Search..."/>
 						</div>
 						<Table 
 							edit = {this.editContest}
@@ -97,12 +103,6 @@ class Contests extends React.Component {
 							cols = {["#","Title","Game ID","Winners","Status","Declaration Date","Actions"]}
 						/>
 						<div className={classes.PaginationStyle}>
-							<select onChange = {this.changeRecordsSize}>
-								<option value ="#">Records</option>
-								<option value ="5">5</option>
-								<option value ="10">10</option>
-								<option value ="15">15</option>
-							</select>
 							<Button size = "small" onClick = {() => this.changePageSize("decrement")} disabled={this.state.page === 1}>Previous</Button>
 							<Button size = "small" onClick = {() => this.changePageSize("increment")} disabled={Math.ceil((this.props.contests.contests.length/this.state.no_of_records)) === this.state.page}>Next</Button>
 						</div>

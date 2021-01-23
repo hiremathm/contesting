@@ -6,7 +6,7 @@
 	width: 100%
 }
 .Contests Button {
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 	/*padding: 25px;*/
 	height: 30px;
 	font-weight: bold;
@@ -15,7 +15,9 @@
 
 .ButtonStyle {
 	display: flex;
+	/*flex-direction: row;*/
 	justify-content: space-between;
+	align-items: center;
 }
 
 .PaginationStyle{
@@ -28,8 +30,19 @@
 	border-radius: 5px;
 }
 
-.PaginationStyle select {
-	width: 105px;
+.ButtonStyle select{
+	width: 120px;
+	border: 2px solid #ff0055;
+	padding: 0 10px;
+	margin: 1px;
+	height: 35px;
+	border-radius: 5px;
+	outline: none;
+	float: right;
+}
+
+.ButtonStyle input {
+	width: 250px;
 	border: 2px solid #ff0055;
 	padding: 0 10px;
 	margin: 1px;
@@ -135,18 +148,6 @@ select {
 	.Inputid, .Datepicker, .Description{
 		width: 220px;
 	}
-
-	.ButtonStyle {
-		display: flex;
-		justify-content: space-between;
-		font-size: 13px;
-	}
-
-	.ButtonStyle h3{
-		font-size: 22px;
-	}
-
-
 }
 
 @media (min-width: 375px){
@@ -173,6 +174,7 @@ select {
 	.Inputid, .Datepicker, .Description{
 		width: 300px;
 	}
+
 }
 
 @media (min-width: 500px){
