@@ -1,9 +1,9 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import { css } from "@emotion/core";
 import {useDispatch} from 'react-redux'
+import FadeLoader from "react-spinners/FadeLoader"
 
 import Card from '../../UI/Card'
-import FadeLoader from "react-spinners/FadeLoader"
 import Input from '../../UI/Input'
 import Button from '../../UI/Button'
 import classes from '../../CSS/Contests.module.css'
@@ -42,22 +42,20 @@ const ContestForm = (props) => {
 
 	const [isLoading, setIsLoading]= useState(false)
 	const dispatch = useDispatch()
-	const formRef = useRef()
 
 	const submitHandler = (e) => {
 		e.preventDefault()
 		setIsLoading(true)
 		const formData = {
-			contest_unique_id: formState.inputs.game_id.value,
+			game_id: formState.inputs.game_id.value,
 			title: formState.inputs.title.value,
 			contest_name: formState.inputs.name.value, 
 			status: formState.inputs.status.value,
-			country: formState.inputs.country.value, 
 			language: "english",
 			banner: "https://daex9l847wg3n.cloudfront.net/contesting_images/contests/test/67748/test-contesting_img2-1611282476.jpg",
 			language_code: formState.inputs.language.value,
-			start_date: formState.inputs.game_start_date.value.toString(),
-			end_date: formState.inputs.game_end_date.value.toString(),
+			start_date: formState.inputs.game_start_date.value.toLocaleString()+ "T00:00:00Z",
+			end_date: formState.inputs.game_end_date.value.toLocaleString() + "T00:00:00Z",
 			question_languages: [formState.inputs.language.value],
 			regions: ["IN"],
 			description: formState.inputs.description.value
@@ -74,7 +72,7 @@ const ContestForm = (props) => {
 			<Card cardstyles = {classes.ContestFormCard}>
 				<p>Create New Contest</p>
 				
-				<form onSubmit = {submitHandler} ref = {formRef}>
+				<form onSubmit = {submitHandler}>
 					<hr/>
 
 					<div>{isLoading && <FadeLoader color="#ff0055" loading={isLoading} size={5} css={override}/>}</div>

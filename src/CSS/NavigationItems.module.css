@@ -47,8 +47,6 @@
 	.NavigationItems {
 		margin: 0;
 		flex-flow: row;
-		display: flex;
-		align-items: center;
 	}
 
 	.NavigationItems li {

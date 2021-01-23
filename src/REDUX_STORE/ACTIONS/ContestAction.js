@@ -32,13 +32,37 @@ export const postContest = (body) => {
 		        })
       		})	
 			if(response.status === 200){
-				console.log(response)
+				console.log("Response in success",await response.json())
 			}else{
-				console.log("RESPONSE in try catch", response)
+				console.log("Response failed", await response.json())
 			}			
-
+			console.log("body",body)
 		}catch(error){
 			console.log("RESPONSE", error)
 		}
+	}
+}
+
+export const removeContest = (id) => {
+	return async (dispatch) => {
+		try {
+			const url = `http://34.204.190.112:6060/contests/${id}` 
+			const response = await fetch(url,{
+	        	method: 'DELETE',
+	        	headers: {
+	          	'Content-Type': 'application/json'
+	        	}
+      		})	
+
+			if(response.status === 200){
+				console.log("Response success",await response.json())
+			}else{
+				console.log("Response failed", await response.json())
+			}			
+		}catch(error){
+			console.log("RESPONSE", error)
+		}
+
+		dispatch(getContests())
 	}
 }
