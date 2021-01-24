@@ -11,6 +11,18 @@ const ContestReducer = (state =  initialState, action) => {
 			}
 
 			return updatedState;
+		case 'FILTER_CONTESTS':
+		console.log("ACTION", action)
+			const allContest  = [...state.contests]
+			
+			const filteredContests = allContest.filter(contest => contest.title.includes(action.payload))
+			console.log("filteredContests", filteredContests)
+			return {
+				...state,
+				contests: filteredContests
+			}
+
+
 		default: 
 			return state
 	}

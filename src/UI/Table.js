@@ -21,7 +21,7 @@ const table = (props) => {
             <tr key = {index}>
               <td>{index + 1}</td>
               <td>{row.title.toUpperCase()}</td>
-              <td>{row.contest_unique_id}</td>
+              <td>{row.game_id}</td>
               <td>{row.no_of_winners}</td>
               <td>{row.status.toUpperCase()}</td>
               <td>{new Date(row.winners_declared_at).toDateString()}</td>

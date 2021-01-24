@@ -7,7 +7,7 @@ import Card from '../../UI/Card'
 import Button from '../../UI/Button'
 import Table from '../../UI/Table'
 // Actions
-import {getContests, removeContest} from '../../REDUX_STORE/ACTIONS/ContestAction'
+import {getContests, removeContest, filterContests} from '../../REDUX_STORE/ACTIONS/ContestAction'
 
 import classes from '../../CSS/Contests.module.css'
 
@@ -75,8 +75,16 @@ class Contests extends React.Component {
 		}
 	}
 
+	searchText = (event) => {
+		const {value} = event.target
+		if(value){
+			this.props.dispatch(filterContests(value))
+		}else{
+			this.props.dispatch(getContests())
+		}
+	}
+
 	render (){
-		console.log("STATE", this.state)
 		return (
 		<Container>
 			<Card cardstyles = {classes.Contests}>
@@ -94,18 +102,26 @@ class Contests extends React.Component {
 								<option value ="15">15</option>
 							</select>
 
-							<input type = "text" placeholder = "Search..."/>
+							<input type = "text" placeholder = "Search..." onChange = {this.searchText}/>
 						</div>
-						<Table 
-							edit = {this.editContest}
-							remove = {this.removeContest} 
-							rows = {this.props.contests.contests.slice(this.state.from,this.state.end)} 
-							cols = {["#","Title","Game ID","Winners","Status","Declaration Date","Actions"]}
-						/>
-						<div className={classes.PaginationStyle}>
-							<Button size = "small" onClick = {() => this.changePageSize("decrement")} disabled={this.state.page === 1}>Previous</Button>
-							<Button size = "small" onClick = {() => this.changePageSize("increment")} disabled={Math.ceil((this.props.contests.contests.length/this.state.no_of_records)) === this.state.page}>Next</Button>
-						</div>
+						{
+							this.props.contests.contests.length > 0 ? 
+							<>
+							<Table 
+								edit = {this.editContest}
+								remove = {this.removeContest} 
+								rows = {this.props.contests.contests.slice(this.state.from,this.state.end)} 
+								cols = {["#","Title","Game ID","Winners","Status","Declaration Date","Actions"]}
+							/>
+
+							<div className={classes.PaginationStyle}>
+								<Button size = "small" onClick = {() => this.changePageSize("decrement")} disabled={this.state.page === 1}>Previous</Button>
+								<Button size = "small" onClick = {() => this.changePageSize("increment")} disabled={Math.ceil((this.props.contests.contests.length/this.state.no_of_records)) === this.state.page}>Next</Button>
+							</div>
+							</>
+							: 
+							<div className = {classes.NoRecordsFound}>No Records found!</div>
+						}
 					</Col>
 					</Row>
 				}

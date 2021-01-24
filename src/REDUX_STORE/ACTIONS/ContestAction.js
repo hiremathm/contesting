@@ -1,5 +1,11 @@
 import axios from '../../AXIOS_CONFIG/Axios'
 
+export const filterContests = (payload) => {
+	return async (dispatch) => {
+		dispatch({type: 'FILTER_CONTESTS', payload})
+	}
+}
+
 export const getContests = () => {
 	return async (dispatch) => {
 		try {
