@@ -45,17 +45,13 @@ export const useForm = (initialInputs, initialFormValidity) => {
 	const [formState, dispatchForm] = useReducer(
 		formReducer, { inputs: initialInputs, formIsValid: initialFormValidity }
 	)
-
 	const inputHandler = useCallback((inputId, value, isValid) => {
 		dispatchForm({
 			type: 'INPUT_CHANGE',
 			value,isValid,inputId
 		})
-		// console.log("formState", formState)
 	}, [])
-
 	const setFormData = useCallback((editForm, formIsValid) => {
-		// console.log("INPUTS", inputs, formIsValid)
 		dispatchForm({
 			type: 'SET_DATA',
 			inputs: editForm.inputs, formIsValid 
