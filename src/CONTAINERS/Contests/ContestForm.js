@@ -41,30 +41,42 @@ const ContestForm = (props) => {
 	}, false)
 
 	const [isLoading, setIsLoading]= useState(false)
+	const [errorText, setErrorText]= useState()
 	const dispatch = useDispatch()
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault()
-		setIsLoading(true)
-		const formData = {
-			game_id: formState.inputs.game_id.value,
-			title: formState.inputs.title.value,
-			contest_name: formState.inputs.name.value, 
-			status: formState.inputs.status.value,
-			language: "english",
-			banner: "https://daex9l847wg3n.cloudfront.net/contesting_images/contests/test/67748/test-contesting_img2-1611282476.jpg",
-			language_code: formState.inputs.language.value,
-			start_date: formState.inputs.game_start_date.value,
-			end_date: formState.inputs.game_end_date.value,
-			question_languages: [formState.inputs.language.value],
-			regions: ["IN"],
-			description: formState.inputs.description.value
-		}
- 		dispatch(postContest(formData))
-		setTimeout(() => {
+		try {
+			setIsLoading(true)
+			const formData = {
+				game_id: formState.inputs.game_id.value,
+				title: formState.inputs.title.value,
+				contest_name: formState.inputs.name.value, 
+				status: formState.inputs.status.value,
+				language: "english",
+				banner: "https://daex9l847wg3n.cloudfront.net/contesting_images/contests/test/67748/test-contesting_img2-1611282476.jpg",
+				language_code: formState.inputs.language.value,
+				start_date: formState.inputs.game_start_date.value,
+				end_date: formState.inputs.game_end_date.value,
+				question_languages: [formState.inputs.language.value],
+				regions: [formState.inputs.country.value],
+				description: formState.inputs.description.value
+			}
+	 		await dispatch(postContest(formData))
+			
+			const timer = setTimeout(() => {
+				setIsLoading(false)
+				props.history.push("/contests")
+			}, 5000)
+
+		}catch(error){
+			setErrorText(error.message)
 			setIsLoading(false)
-			props.history.push("/contests")
-		}, 5000)
+		}
+
+		return (timer) => {
+			timer.clearTimeout()
+		}
 	}
 
 	return (
@@ -74,7 +86,7 @@ const ContestForm = (props) => {
 				
 				<form onSubmit = {submitHandler}>
 					<hr/>
-
+					{errorText && <p style = {{fontSize: "16px", color: "red", textAlign: "center", margin: "10px"}}>{errorText}</p>}
 					<div>{isLoading && <FadeLoader color="#ff0055" loading={isLoading} size={5} css={override}/>}</div>
 					<Backdrop show = {isLoading}/>
 

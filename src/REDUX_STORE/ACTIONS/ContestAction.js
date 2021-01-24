@@ -23,28 +23,22 @@ export const getContests = () => {
 	}
 }
 
-
 export const postContest = (body) => {
 	return async (dispatch) => {
-		try {
-			const url = 'http://34.204.190.112:6060/contests' 
-			const response = await fetch(url,{
-	        	method: 'POST',
-	        	headers: {
-	          	'Content-Type': 'application/json'
-	        	},
-		        body: JSON.stringify({
-		          	contest: body
-		        })
-      		})	
-			if(response.status === 200){
-				console.log("Response in success",await response.json())
-			}else{
-				console.log("Response failed", await response.json())
-			}			
-			console.log("body",body)
-		}catch(error){
-			console.log("RESPONSE", error)
+		const url = 'http://34.204.190.112:6060/contests' 
+		const response = await fetch(url,{
+        	method: 'POST',
+        	headers: {
+          	'Content-Type': 'application/json'
+        	},
+	        body: JSON.stringify({
+	          	contest: body
+	        })
+  		})	
+		
+		if(!response.ok){
+			const errorResponse = await response.json()
+			throw new Error(errorResponse.error.join(", "))
 		}
 	}
 }
