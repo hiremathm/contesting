@@ -5,7 +5,6 @@ const app = express()
 const port = process.env.PORT || 3001;
 
 const publicPath = path.join(__dirname, '..',  'build')
-console.log("PUBLIPATH", publicPath)
 app.use(express.static(publicPath));
 
 app.get('/*', (req, res) => {
@@ -13,5 +12,5 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log("server is listening to port", port)
+	console.log("Started Contesting enginee At", port)
 })

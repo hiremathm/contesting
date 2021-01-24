@@ -42,10 +42,6 @@ class Contests extends React.Component {
     	this.props.dispatch(removeContest(id))
 	}
 
-	editContest = (id) => {
-		console.log("edit item", id)
-	}
-
 	changeRecordsSize = (event) => {
 		let no_of_records = event.target.value
 		if(no_of_records === "#"){
@@ -108,7 +104,6 @@ class Contests extends React.Component {
 							this.props.contests.contests.length > 0 ? 
 							<>
 							<Table 
-								edit = {this.editContest}
 								remove = {this.removeContest} 
 								rows = {this.props.contests.contests.slice(this.state.from,this.state.end)} 
 								cols = {["#","Title","Game ID","Winners","Status","Declaration Date","Actions"]}

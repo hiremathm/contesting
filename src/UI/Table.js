@@ -1,6 +1,7 @@
 import React from 'react'
 import {Table} from 'react-bootstrap'
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
+import { NavLink } from 'react-router-dom'
 
 import tableClasses from '../CSS/Table.module.css'
 
@@ -26,7 +27,15 @@ const table = (props) => {
               <td>{row.status.toUpperCase()}</td>
               <td>{new Date(row.winners_declared_at).toDateString()}</td>
               <td>
-                  <MdModeEdit style = {{cursor: 'pointer'}} size = "2em" color = "green" onClick = {() => props.edit(row.contest_id)}/>
+                  
+                  <NavLink to={`/contests/edit/${row.contest_id}`}>
+                    <MdModeEdit 
+                      style = {{cursor: 'pointer'}} 
+                      size = "2em" 
+                      color = "green"
+                    />
+                  </NavLink>
+                  
                   <MdDeleteForever style = {{marginLeft: "5px", cursor: 'pointer' }} size = "2em" color = "red" onClick = {() => props.remove(row.contest_id)}/>
               </td>
             </tr>

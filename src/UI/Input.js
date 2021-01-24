@@ -66,7 +66,7 @@ const Input = (props) => {
 				placeholder = {props.placeholder}
 				className={props.Inputstyles ? props.Inputstyles : classes.InputElement}
 				onChange = {inputChangeHandler}
-				value = {inputState.value}
+				value = {inputState.value ? inputState.value : props.value }
 				onBlur = {touchHandler}
 			/>
 			
@@ -79,7 +79,7 @@ const Input = (props) => {
 				name = {props.name}
 				placeholder = {props.placeholder}
 				onChange = {inputChangeHandler}
-				value = {inputState.value}
+				value = {inputState.value ? inputState.value : props.value }
 				onBlur = {touchHandler}
 			/>
 			break;
@@ -87,12 +87,11 @@ const Input = (props) => {
 			inputElement = <select className={props.Inputstyles ? props.Inputstyles : classes.InputElement} 
 					onChange = {inputChangeHandler}
 					onBlur = {touchHandler}
-					value = {inputState.value}
-
+				value = {inputState.value ? inputState.value : props.value }
 				>
 				{
 					props.options.map(option => {
-						return <option key = {option.value} value = {option.value} >{option.text}</option> 					
+						return <option key = {option.value} value = {option.value}>{option.text}</option> 					
 					})
 				} 
 			</select>

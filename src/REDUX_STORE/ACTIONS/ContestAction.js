@@ -43,6 +43,27 @@ export const postContest = (body) => {
 	}
 }
 
+export const updateContest = (body, id) => {
+	return async (dispatch) => {
+		const url = `http://34.204.190.112:6060/contests/${id}` 
+		const response = await fetch(url,{
+        	method: 'PATCH',
+        	headers: {
+          	'Content-Type': 'application/json'
+        	},
+	        body: JSON.stringify({
+	          	contest: body
+	        })
+  		})	
+		
+		if(!response.ok){
+			const errorResponse = await response.json()
+			console.log("errorResponse", errorResponse)
+			throw new Error(errorResponse.error)
+		}
+	}
+}
+
 export const removeContest = (id) => {
 	return async (dispatch) => {
 		try {

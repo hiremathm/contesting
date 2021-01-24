@@ -1,10 +1,11 @@
 import React,{useCallback, useEffect, useState} from 'react'
 
-import {BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 
 import Layout from './UI/Layout'
 import Contests from './CONTAINERS/Contests/Contests'
 import ContestForm from './CONTAINERS/Contests/ContestForm'
+import ContestEditForm from './CONTAINERS/Contests/ContestEditForm'
 
 import Winners from './CONTAINERS/Winners/Winners'
 import Slots from './CONTAINERS/Slots/Slots'
@@ -49,23 +50,26 @@ const App = () => {
   	<AuthContext.Provider value = {{isLoggedIn, login, logout}}>
 	  	<BrowserRouter>
 		  	<div>
-			    <Layout>
-			    {isLoggedIn ? (
-			    	<>
-						<Route path = "/contests" component = {Contests} exact/>
-						<Route path = "/contests/new" component = {ContestForm} exact />
-						<Route path = "/slots" component = {Slots} exact/>		    	
-						<Route path = "/winners" component = {Winners} exact/>		    	
-						<Route path = "/reports" component = {Reports} exact/>	
-						{<Redirect to = "/contests" />}
-			    	</>
-			    	) : (
-			    	<>
-						<Route path = "/authentication" component = {Auth} exact />
-						<Redirect to = "/authentication" />
-			    	</>
-			    	)}
-			    </Layout>
+		    <Layout>
+		  		<Switch>
+				    {isLoggedIn ? (
+				    	<>
+							<Route path = "/contests" component = {Contests} exact/>
+							<Route path = "/contests/new" component = {ContestForm} exact />
+							<Route path = "/contests/edit/:id" component = {ContestEditForm} exact />
+							<Route path = "/slots" component = {Slots} exact/>		    	
+							<Route path = "/winners" component = {Winners} exact/>		    	
+							<Route path = "/reports" component = {Reports} exact/>	
+							{<Redirect to = "/contests" />}
+				    	</>
+				    	) : (
+				    	<>
+							<Route path = "/authentication" component = {Auth} exact />
+							<Redirect to = "/authentication" />
+				    	</>
+				    	)}
+			    </Switch>
+		    </Layout>
 		    </div>
 	    </BrowserRouter>
     </AuthContext.Provider>
