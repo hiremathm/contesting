@@ -83,6 +83,7 @@ const ContestForm = (props) => {
 				
 				<form onSubmit = {submitHandler}>
 					<hr/>
+					
 					{errorText && <p style = {{fontSize: "16px", color: "red", textAlign: "center", margin: "10px"}}>{errorText}</p>}
 					<div>{isLoading && <FadeLoader color="#ff0055" loading={isLoading} size={5} css={override}/>}</div>
 					<Backdrop show = {isLoading}/>

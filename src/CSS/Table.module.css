@@ -20,9 +20,9 @@
 @media (min-width: 321px){
 	.Table{
 		font-size: 15px;
-		overflow-x: scroll;
+		/*overflow-x: scroll;*/
 		/*display: inline-table;*/
-		/*width: auto;*/
+		/*width: 100%;*/
 		/*white-space: nowrap;*/
 		/*display: inline-block;*/
 		/*overflow: none;*/
@@ -30,9 +30,10 @@
 	}
 }
 
-@media (min-width: 1000px){
+@media (min-width: 500px){
 	.Table {	
 		font-size: 15px;
+		width: 100%;
 		overflow:hidden;
 		display: inline-table;	
 	}

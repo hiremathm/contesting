@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Col, Row, Container} from 'react-bootstrap'
 import PulseLoader from "react-spinners/PulseLoader"
+import { MdDeleteForever, MdModeEdit } from "react-icons/md";
+import { NavLink } from 'react-router-dom'
+
 
 import Card from '../../UI/Card'
 import Button from '../../UI/Button'
@@ -81,6 +84,34 @@ class Contests extends React.Component {
 	}
 
 	render (){
+		const contestsInRange = this.props.contests.contests.slice(this.state.from,this.state.end)
+		const mappedContests = [] 
+		contestsInRange.forEach(row => (
+			mappedContests.push(
+				[
+					<NavLink style = {{textDecoration: 'none'}} to = {`/contests/${row.contest_id}`}>{row.title.toUpperCase()}</NavLink>,
+					<NavLink style = {{textDecoration: 'none'}} to = {`/contests/${row.contest_id}`}>{row.game_id}</NavLink>,
+					row.no_of_winners,
+					row.status.toUpperCase(),
+					row.winners_declared_at,
+					<>
+					<NavLink to={`/contests/edit/${row.contest_id}`}>
+                    	<MdModeEdit 
+                      		style = {{cursor: 'pointer'}} 
+                      		size = "2em" 
+                      		color = "green"
+                    	/>
+                  	</NavLink>
+                  	<MdDeleteForever 
+	                    style = {{marginLeft: "5px", cursor: 'pointer' }} 
+	                    size = "2em" 
+	                    color = "red" 
+	                    onClick = {() => this.props.dispatch(removeContest(row.contest_id))}
+	                />
+	                </>	
+				]
+			)
+		))
 		return (
 		<Container>
 			<Card cardstyles = {classes.Contests}>
@@ -105,7 +136,7 @@ class Contests extends React.Component {
 							<>
 							<Table 
 								remove = {this.removeContest} 
-								rows = {this.props.contests.contests.slice(this.state.from,this.state.end)} 
+								rows = {mappedContests}
 								cols = {["#","Title","Game ID","Winners","Status","Declaration Date","Actions"]}
 							/>
 
