@@ -155,26 +155,27 @@
 }
 
 .AddAnswersHeader p {
-	font-size: 25px;
+	font-size: 12px;
 	margin: 0;
 }
 
 .AddAnswersHeader Button {
 	margin: 0;
+	font-size: 12px;
 }
 
 .InputField {
 	display: flex;
 	flex-flow: row;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: center;
 }
 
 .Radio {
-	margin: 10px;
+	margin-top: 60px;
 	border: 0px;
-    width: 30%;
-    height: 50px;
+    width: 100%;
+    height: 20px;
 
 }
 
@@ -185,8 +186,48 @@ select {
 
 }
 
+@media (min-width: 200px){
+	.FormGroup {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.InputField {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.Inputid {
+		width: 200px;
+	}
+	
+	.Datepicker {
+		width: 200px;
+	}
+
+	.Description {
+		width: 200px;
+	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 12px;
+	}
+
+	.AddAnswersHeader Button {
+		font-size: 12px;
+	}
+}
+
 @media (min-width: 320px){
-	.FormGroup{
+	.FormGroup, .InputField{
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -195,13 +236,26 @@ select {
 	.Inputid, .Datepicker, .Description{
 		width: 220px;
 	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 12px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 12px;
+	}
 }
 
 @media (min-width: 375px){
 	.ContestFormCard p {
 		font-size: 25px;
 	}
-	.FormGroup {
+	.FormGroup, .InputField {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -210,9 +264,22 @@ select {
 	.Inputid, .Datepicker, .Description{
 		width: 270px;
 	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 12px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 12px;
+	}
 }
 @media (min-width: 414px){
-	.FormGroup{
+	.FormGroup, .InputField{
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -222,10 +289,22 @@ select {
 		width: 300px;
 	}
 
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 12px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 12px;
+	}
 }
 
 @media (min-width: 500px){
-	.FormGroup {
+	.FormGroup, .InputField {
 		display: flex;
 		flex-flow: row;
 		align-items: center;
@@ -236,10 +315,18 @@ select {
 	.Inputid, .Datepicker, .Description{
 		width: 240px;
 	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 18px;
+	}
 }
 
 @media (min-width: 540px){
-	.FormGroup {
+	.FormGroup, .InputField {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -249,10 +336,23 @@ select {
 	.Inputid, .Datepicker, .Description {
 		width: 380px;
 	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 16px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 600px){
-	.FormGroup{
+	.FormGroup, .InputField{
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -264,11 +364,22 @@ select {
 		width: 400px;
 	}
 
+	.Radio {
+		margin: 0;
+	}
 
+	.AddAnswersHeader p{
+		font-size: 20px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 20px;
+	}
 }
 
 @media (min-width: 768px){
-	.FormGroup {
+	.FormGroup, .InputField {
 		display: flex;
 		flex-flow: row;
 		align-items: center;
@@ -286,11 +397,31 @@ select {
 	.Description{
 		width: 500px;
 	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 20px;
+	}
+
+	.AddAnswersHeader Button {
+		margin: 0;
+		font-size: 20px;
+	}
 }
 
 
 @media (min-width: 1000px){
 	.FormGroup {
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.InputField {
 		display: flex;
 		flex-flow: row;
 		align-items: center;
@@ -306,6 +437,14 @@ select {
 	}
 
 	.Description {
-		width: 810px;
+		width: 630px;
+	}
+
+	.Radio {
+		margin: 0;
+	}
+
+	.AddAnswersHeader p{
+		font-size: 22px;
 	}
 }
