@@ -255,6 +255,12 @@ select {
 		margin: 0;
 		font-size: 12px;
 	}
+
+	.Contests Button {
+		height: 30px;
+		font-weight: bold;
+		font-size: 12px;
+	}	
 }
 
 @media (min-width: 375px){
@@ -283,6 +289,12 @@ select {
 		margin: 0;
 		font-size: 12px;
 	}
+
+	.Contests Button {
+		height: 30px;
+		font-weight: bold;
+		font-size: 12px;
+	}
 }
 @media (min-width: 414px){
 	.FormGroup, .InputField{
@@ -307,6 +319,12 @@ select {
 		margin: 0;
 		font-size: 12px;
 	}
+
+	.Contests Button {
+		height: 30px;
+		font-weight: bold;
+		font-size: 12px;
+	}
 }
 
 @media (min-width: 500px){
@@ -328,6 +346,12 @@ select {
 
 	.AddAnswersHeader p{
 		font-size: 18px;
+	}
+
+	.Contests Button {
+		height: 30px;
+		font-weight: bold;
+		font-size: 12px;
 	}
 }
 
@@ -415,6 +439,12 @@ select {
 	.AddAnswersHeader Button {
 		margin: 0;
 		font-size: 20px;
+	}
+
+	.Contests Button {
+		height: 30px;
+		font-weight: bold;
+		font-size: 18px;
 	}
 }
 

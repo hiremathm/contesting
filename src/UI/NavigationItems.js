@@ -36,8 +36,8 @@ const NavigationItems = (props) => {
 				<li className = {classes.NavigationItem} onClick = {props.clicked}><NavLink to= "/slots" exact>Slots</NavLink></li>
 				<li className = {classes.NavigationItem} onClick = {props.clicked}><NavLink to= "/winners" exact>Winners</NavLink></li>
 				<li className = {classes.NavigationItem} onClick = {props.clicked}><NavLink to= "/reports" exact>Reports</NavLink></li>
-				<li className = {classes.NavigationItem} onClick = {props.clicked}><NavLink to= "/logout" onClick = {logoutAuth}exact>
-				    <IoLogOutOutline style = {{color: 'white', height: '30px', width: '40px' }} />
+				<li className = {`${classes.NavigationItem} ${classes.LogoutLink}`} onClick = {props.clicked}><NavLink to= "/logout" onClick = {logoutAuth}exact>
+			    <IoLogOutOutline style = {{color: 'white', height: '30px', width: '40px' }} />
 					</NavLink>
 				</li>
 			</>

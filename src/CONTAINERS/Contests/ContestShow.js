@@ -77,14 +77,14 @@ const ContestShow = React.memo((props) => {
 
 			<Button size = "small" onClick = {() => props.history.push(`/contests/${id}/questions/new`)}>Add Questions</Button>
 
-			{!isLoading && questions.length > 0 ? (
+			{(!isLoading && questions.length > 0) && (
 				<Table 
 					cols = {["#","Question","Unique Id","Contest Id","Actions"]}
 					rows = {getRows(id)}
 				/>
-			) : (
-				<div className = {classes.NoRecordsFound}>No Records found!</div>
 			)}
+
+			{(!isLoading && questions.length === 0) && <div className = {classes.NoRecordsFound}>No Records found!</div>}
 		</Card>
 	)
 })

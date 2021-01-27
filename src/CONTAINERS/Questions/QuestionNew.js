@@ -43,7 +43,7 @@ const QuestionNew = (props) => {
 	`;
 
 	const addAnwerFields = useCallback(() => {
-		if(counter != 4){
+		if(counter !== 4){
 			setCounter(prevState => prevState + 1)
 
 			pushToAnswerField(prevState => [
