@@ -179,6 +179,12 @@
 
 }
 
+.Warning {
+	color: red;
+	text-align: center;
+	font-weight:  bold;
+}
+
 select {
 	background-color: white;
 	color: #5F6A6A;

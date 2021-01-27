@@ -53,7 +53,6 @@ export const useForm = (initialInputs, initialFormValidity) => {
 	}, [])
 
 	const setFormData = useCallback((editForm, formIsValid) => {
-		console.log("EDIT FORM", editForm)
 		dispatchForm({
 			type: 'SET_DATA',
 			inputs: editForm.inputs, formIsValid 
