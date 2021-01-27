@@ -1,6 +1,9 @@
 import React,{useCallback, useEffect, useState} from 'react'
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
+import  {withRouter} from 'react-router-dom';
+
 
 import Layout from './UI/Layout'
 
@@ -57,37 +60,40 @@ const App = () => {
   return (
   	<AuthContext.Provider value = {{isLoggedIn, login, logout}}>
 	  	<BrowserRouter>
-		  	<div>
-		    <Layout>
-				    {isLoggedIn ? (
-				    	<>
-				    		<Switch>
-								{/*contest routes*/}
-								<Route path = "/contests" component = {Contests} exact/>
-								<Route path = "/contests/new" component = {ContestForm} exact />
-								<Route path = "/contests/edit/:id" component = {ContestEditForm} exact />
-								<Route path = "/contests/:id" component = {ContestShow} exact/>
+			<Layout>
+				{
+					isLoggedIn ? (
+					<>
+						<Switch>
+							{/*contest routes*/}
+							<Route path = "/contests" component = {Contests} exact/>
+							<Route path = "/contests/new" component = {ContestForm} exact />
+							<Route path = "/contests/edit/:id" component = {ContestEditForm} exact />
+							<Route path = "/contests/:id" component = {ContestShow} exact/>
 
-								{/*question routes*/}
-								<Route path = "/contests/:id/questions/new" component = {QuestionNew} exact />
-								
-								{/*slot routes*/}
-								<Route path = "/slots" component = {Slots} exact/>		    	
-								
-								{/*winner routes*/}
-								<Route path = "/winners" component = {Winners} exact/>		    	
-								
-								{/*report routes*/}
-								<Route path = "/reports" component = {Reports} exact/>	
-							</Switch>
-				    	</>
-				    	) : (
-				    	<>
+							{/*question routes*/}
+							<Route path = "/contests/:id/questions/new" component = {QuestionNew} exact />
+							
+							{/*slot routes*/}
+							<Route path = "/slots" component = {Slots} exact/>		    	
+							
+							{/*winner routes*/}
+							<Route path = "/winners" component = {Winners} exact/>		    	
+							
+							{/*report routes*/}
+							<Route path = "/reports" component = {Reports} exact/>	
+							<Redirect to = "/contests" />
+						</Switch>
+		    		</>
+		    	) : (
+		    		<>
+		    			<Switch>
 							<Route path = "/authentication" component = {Auth} exact />
-				    	</>
-				    	)}
-		    </Layout>
-		    </div>
+							<Redirect to = "/authentication" />
+						</Switch>
+		    		</>
+	    		)}
+    		</Layout>
 	    </BrowserRouter>
     </AuthContext.Provider>
   )

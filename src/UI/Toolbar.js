@@ -14,7 +14,7 @@ const toolbar = (props) => {
 				<img alt = "Contest" src ="https://cdn.xl.thumbs.canstockphoto.com/contest-word-stars-fireworks-exciting-raffle-drawing-news-contest-word-in-3d-letters-to-announce-pictures_csp19094781.jpg " width ="100px" height = "55px" />
 			</div>*/}
 			<nav className = {classes.DesktopOnly}>
-				<NavigationItems />
+				<NavigationItems clicked = {props.drawerToggleClicked}/>
 			</nav>
 		</header>
 	)
