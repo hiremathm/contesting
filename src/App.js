@@ -2,9 +2,6 @@ import React,{useCallback, useEffect, useState} from 'react'
 
 import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import  {withRouter} from 'react-router-dom';
-
-
 import Layout from './UI/Layout'
 
 // COMPONENTS
@@ -16,11 +13,16 @@ import ContestShow from './CONTAINERS/Contests/ContestShow'
 
 // Questions
 import QuestionNew from './CONTAINERS/Questions/QuestionNew'
-
-
-import Winners from './CONTAINERS/Winners/Winners'
+// Slots
 import Slots from './CONTAINERS/Slots/Slots'
+import SlotsNew from './CONTAINERS/Slots/SlotsNew'
+
+// Winners
+import Winners from './CONTAINERS/Winners/Winners'
+
+// Reports
 import Reports from './CONTAINERS/Reports/Reports'
+
 import Auth from './CONTAINERS/Auth/Auth'
 
 // auth context 
@@ -76,6 +78,7 @@ const App = () => {
 							
 							{/*slot routes*/}
 							<Route path = "/slots" component = {Slots} exact/>		    	
+							<Route path = "/slots/new" component = {SlotsNew} exact />
 							
 							{/*winner routes*/}
 							<Route path = "/winners" component = {Winners} exact/>		    	

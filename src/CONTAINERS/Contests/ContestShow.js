@@ -38,13 +38,7 @@ const ContestShow = React.memo((props) => {
 
 	const getRows = (constest_id) => {
 		let allQuestions = []
-		if(questions.length > 0){
-
-		}else{
-			allQuestions.push([
-				<p>No Questions found.</p>
-			])
-		}
+		
 		questions.forEach((question, index) => allQuestions.push(
 			[
 				question.question_id, 
@@ -64,9 +58,10 @@ const ContestShow = React.memo((props) => {
 	                    color = "red" 
 	                    onClick = {() => removeQuestion(question.id, constest_id)}
 	                />
-	            </>	
+	            </>
 			]
 		))
+		
 		return allQuestions
 	}
 
@@ -75,13 +70,15 @@ const ContestShow = React.memo((props) => {
 			
 			<div>{isLoading && <PulseLoader color="#ff0055" loading={isLoading} size={15} css={override}/>}</div>
 
-			<Button size = "small" onClick = {() => props.history.push(`/contests/${id}/questions/new`)}>Add Questions</Button>
 
 			{(!isLoading && questions.length > 0) && (
-				<Table 
-					cols = {["#","Question","Unique Id","Contest Id","Actions"]}
-					rows = {getRows(id)}
-				/>
+				<>
+					<Button size = "small" onClick = {() => props.history.push(`/contests/${id}/questions/new`)}> + Add Question</Button>
+					<Table 
+						cols = {["#","Question","Unique Id","Contest Id","Actions"]}
+						rows = {getRows(id)}
+					/>
+				</>
 			)}
 
 			{(!isLoading && questions.length === 0) && <div className = {classes.NoRecordsFound}>No Records found!</div>}

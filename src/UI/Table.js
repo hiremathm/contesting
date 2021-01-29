@@ -12,8 +12,10 @@ const table = props => {
     return allColumns
   }
 
+  const cssClass = props.cols.length > 5 ? tableClasses.Table : tableClasses.TableSmall
+
   return (
-    <Table className = {tableClasses.Table} >
+    <Table className = {cssClass} >
       <thead>
         <tr>
           {

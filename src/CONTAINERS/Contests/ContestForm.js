@@ -73,6 +73,9 @@ const ContestForm = (props) => {
 		}catch(error){
 			setErrorText(error.message)
 			setIsLoading(false)
+			setTimeout(() => {
+				setErrorText(null)
+			}, 2000)
 		}
 	}
 
