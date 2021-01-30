@@ -116,13 +116,14 @@
 	/*background-color: white;*/
 
 }
-
+.Datepicker:hover,
 .Description:hover,
 .Inputid:hover {
 	border: 1px solid black;
 	outline: none;
 }
 
+.Datepicker:focus,
 .Description:focus,
 .Inputid:focus {
 	border: 2px solid #3D1CC2;
@@ -135,6 +136,10 @@
 	font-size: 14px;
 	height: 30px;
 	border-radius: 3px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #ccc;
 }
 
 .Description {
