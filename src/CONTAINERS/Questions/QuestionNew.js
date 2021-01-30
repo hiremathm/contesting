@@ -86,7 +86,6 @@ const QuestionNew = (props) => {
 	const submitHandler = (event) => {
 		event.preventDefault()
 		setFormData(formState, true)
-		console.log("FORMDATA", formState)
 		const { inputs } = formState
 
 		setLoading(true)
@@ -186,58 +185,6 @@ const QuestionNew = (props) => {
 	                	validators = {[]}
 	                />	
 				</div>
-
-				{/*<div className = {classes.FormGroup} >
-									<Input
-					                	inputtype = "textarea" 
-					                    type = "text-area"
-					                    id = "answer_id_0"
-					                    placeholder = "Answer"
-					                    errortext = "Required"
-					                    label = "Answer 0"
-					                    setlabel = {true}
-					                    onInput = {inputHandler}
-					                    Inputstyles = {classes.Description}
-					                	validators = {[]}
-					                	onChange = {() => {}}
-					                />
-				                </div>
-				
-				                <div className = {classes.FormGroup} >
-									<Input
-					                	inputtype = "textarea" 
-					                    type = "text-area"
-					                    id = "answer_id_1"
-					                    placeholder = "Answer"
-					                    errortext = "Required"
-					                    label = "Answer 1"
-					                    setlabel = {true}
-					                    onInput = {inputHandler}
-					                    validators = {[]}
-					                    Inputstyles = {classes.Description}
-					                />
-				                </div>
-				
-				                <div className = {classes.FormGroup}>
-				
-					               <input
-					                    type = "radio"
-					                    id = "right_answer"
-					                    onChange = {() => inputHandler('right_answer', 'answer_id_0', true)}
-					                    className = {classes.Radio}
-					                	name = "right_answer"
-					                	value = "answer_id_0"
-					                />
-				
-					               <input
-					                    type = "radio"
-					                    id = "right_answer"
-					                    onChange = {() => inputHandler('right_answer', 'answer_id_1', true)}
-					                    className = {classes.Radio}
-					                	name = "right_answer"
-					                	value = "answer_id_0"
-					                />
-				                </div>*/}
 
 				{answerFieldList.map((anwerList, index) => <div key = {index} className = {classes.InputField}>{anwerList}</div>)}
 

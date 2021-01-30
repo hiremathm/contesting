@@ -3,7 +3,7 @@ import axios from '../../AXIOS_CONFIG/Axios'
 export const getQuestions = (contest_id) => {
 	return async (dispatch) => {
 		const response = await axios.get(`/contest/${contest_id}/questions`)	
-		console.log("constest_id", response.data.data.questions)
+		// console.log("constest_id", response.data.data.questions)
 
 		if(response.status === 200){
 			dispatch({

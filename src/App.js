@@ -18,7 +18,7 @@ import Slots from './CONTAINERS/Slots/Slots'
 import SlotsNew from './CONTAINERS/Slots/SlotsNew'
 
 // Winners
-import Winners from './CONTAINERS/Winners/Winners'
+import WinnerNew from './CONTAINERS/Winners/WinnerNew'
 
 // Reports
 import Reports from './CONTAINERS/Reports/Reports'
@@ -81,7 +81,7 @@ const App = () => {
 							<Route path = "/slots/new" component = {SlotsNew} exact />
 							
 							{/*winner routes*/}
-							<Route path = "/winners" component = {Winners} exact/>		    	
+							<Route path = "/winners" component = {WinnerNew} exact/>		    	
 							
 							{/*report routes*/}
 							<Route path = "/reports" component = {Reports} exact/>	
